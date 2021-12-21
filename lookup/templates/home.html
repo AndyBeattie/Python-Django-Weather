@@ -4,7 +4,13 @@
 
 <h1>Hello World!!</h1>
 <br/>
-{{ api }}
+Air Quality Index: {{ api.0.AQI }} <br/> <br/>
+Date of Reading: {{ api.0.DateObserved }} <br/> <br/>
+Air Quality: {{ api.0.Category.Name }} <br/> <br/>
+City: {{ api.0.ReportingArea }} <br/> <br/>
+PM 2.5 Index: {{api.1.AQI}} <br/> <br/>
+PM 2.5 Quality: {{api.1.Category.Name}} <br/> <br/>
+PM 10 Index: {{api.2.AQI}} <br/> <br/>
 
 {% endblock %}
 
