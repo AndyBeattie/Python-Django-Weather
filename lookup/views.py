@@ -7,7 +7,7 @@ def home(request):
     import json
     import requests
 
-    api_request = requests.get("https://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=94117&distance=25&API_KEY=154AF178-DDC4-46C1-8F86-5984856A7DB3")
+    api_request = requests.get("https://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=90001&distance=25&API_KEY=154AF178-DDC4-46C1-8F86-5984856A7DB3")
     
     try:
         api = json.loads(api_request.content)
@@ -15,6 +15,24 @@ def home(request):
     except Exception as e:
         api = "Error.."
 
+    #Expand Regions
+    #region PM 2.5 Quality Colour Changing Logic
+    if api[0]['Category']['Name'] == 'Good':
+        pm25_quality = "good"
+
+    if api[0]['Category']['Name'] == 'Moderate':
+        pm25_quality = "moderate"
+
+    if api[0]['Category']['Name'] == 'Unhealthyforsensitivegroups':
+        pm25_quality = "unhealthyforsensitivegroups"
+
+    if api[0]['Category']['Name'] == 'Unhealthy':
+        pm25_quality = "unhealthy"
+
+    if api[0]['Category']['Name'] == 'Hazardous':
+        pm25_quality = "hazardous"
+    #endregion
+    #region Air Quality Colour Changing Logic
     if api[1]['AQI'] <= 25:
         pm25_index = "good"
 
@@ -32,10 +50,11 @@ def home(request):
 
     if api[1]['AQI'] > 500: 
         pm25_index = "hazardous"
-
-    return render(request,'home.html', {'api': api,'pm25_index': pm25_index})
+#endregion
+    
+    return render(request,'home.html', {'api': api,'pm25_index': pm25_index, 'pm25_quality': pm25_quality})
 
 def about(request):
     return render(request,'about.html', {})
 
-# Create your views here.
+
