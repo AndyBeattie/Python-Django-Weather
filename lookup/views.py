@@ -1,6 +1,7 @@
 #Views.py File
 from json import loads
 from django.shortcuts import render
+from requests import api
 
 def home(request):
     import json
@@ -14,7 +15,25 @@ def home(request):
     except Exception as e:
         api = "Error.."
 
-    return render(request,'home.html', {'api': api})
+    if api[1]['AQI'] <= 25:
+        pm25_index = "good"
+
+    if api[1]['AQI'] > 25 and api[1]['AQI'] <= 50:
+        pm25_index = "moderate"
+
+    if api[1]['AQI'] > 50 and api[1]['AQI'] <= 100:
+        pm25_index = "unhealthyforsensitivegroups"
+
+    if api[1]['AQI'] > 100 and api[1]['AQI'] <= 300 :
+        pm25_index = "unhealthy"
+
+    if api[1]['AQI'] > 300 and api[1]['AQI'] <= 500:
+        pm25_index = "veryunhealthy"
+
+    if api[1]['AQI'] > 500: 
+        pm25_index = "hazardous"
+
+    return render(request,'home.html', {'api': api,'pm25_index': pm25_index})
 
 def about(request):
     return render(request,'about.html', {})

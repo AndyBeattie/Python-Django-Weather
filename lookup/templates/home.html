@@ -9,8 +9,8 @@
     <hr> 
 </div>
 
-<div class = "alert alert-dark" role="alert" ><Strong>Date of Reading:</Strong><hr> {{ api.0.DateObserved }} </div>
-<br/>
+<div class = "alert alert-dark" role="alert" ><strong>City:</strong><hr> {{ api.0.ReportingArea }}</div> <br/>
+
 
 {% if api %}
     {% if api == 'Error..' %}
@@ -19,40 +19,48 @@
 
     
     <div class = "alert alert-dark" role="alert" >
-        <div class = "alert alert-dark" role="alert" ><strong>City:</strong><hr> {{ api.0.ReportingArea }}</div> <br/>
-        <div class = "alert alert-dark" role="alert" ><strong>Air Quality Index:</strong> {{ api.0.AQI }} </div>   
+       
+        <div class = "alert alert-dark" role="alert" ><Strong>Date of Reading:</Strong><hr> {{ api.0.DateObserved }} </div>
+        <div class = "alert alert-dark" role="alert" ><strong>Air Quality Index:</strong><hr> {{ api.0.AQI }} </div>   
+
+
 
         {% if api.0.Category.Name == 'Good' %}
-            <div class = "alert alert-success" role="alert" ><strong>Air Quality:</strong> {{ api.0.Category.Name }}  </div> 
+            <div class = "alert alert-success" role="alert" ><strong>Air Quality:</strong><hr> {{ api.0.Category.Name }}  </div> 
      
 
         {% elif api.0.Category.Name == 'Moderate' %}
-        <div class = "alert alert-warning" role="alert" ><strong>Air Quality:</strong> {{ api.0.Category.Name }}  </div> 
+        <div class = "alert alert-warning" role="alert" ><strong>Air Quality:</strong><hr> {{ api.0.Category.Name }}  </div> 
     
 
-        {% elif api.0.Category.Name == 'USG' %}
-        <div class = "alert alert-warning" role="alert" ><strong>Air Quality:</strong> {{ api.0.Category.Name }}  </div> 
+        {% elif api.0.Category.Name == 'Unhealthy for Sensitive Groups' %}
+        <div class = "alert alert-warning" role="alert" ><strong>Air Quality:</strong><hr> {{ api.0.Category.Name }}  </div> 
      
 
         {% elif api.0.Category.Name == 'Unhealthy' %}
-        <div class = "alert alert-warning" role="alert" ><strong>Air Quality:</strong> {{ api.0.Category.Name }}  </div> 
+        <div class = "alert alert-warning" role="alert" ><strong>Air Quality:</strong><hr> {{ api.0.Category.Name }}  </div> 
       
 
         {% elif api.0.Category.Name == 'Very unhealthy' %}
-        <div class = "alert alert-danger" role="alert" ><strong>Air Quality:</strong> {{ api.0.Category.Name }}  </div> 
+        <div class = "alert alert-danger" role="alert" ><strong>Air Quality:</strong><hr> {{ api.0.Category.Name }}  </div> 
       
 
         {% elif api.0.Category.Name == 'Hazardous' %}
-        <div class = "alert alert-danger" role="alert" ><strong>Air Quality:</strong> {{ api.0.Category.Name }}  </div> 
+        <div class = "alert alert-danger" role="alert" ><strong>Air Quality:</strong><hr> {{ api.0.Category.Name }}  </div> 
         
         {% endif %}
 
 
-           
-        <div class = "alert alert-dark" role="alert" ><strong>PM 2.5 Index:</strong> {{api.1.AQI}} </div>
-        <div class = "alert alert-dark" role="alert" ><Strong>PM 2.5 Quality:</Strong> {{api.1.Category.Name}} </div>
-        <div class = "alert alert-dark" role="alert" ><strong>PM 10 Index:</strong> {{api.2.AQI}} </div>
-        <div class = "alert alert-dark" role="alert" ><strong>PM 10 Quality:</strong> {{api.2.Category.Name}}  </div>
+
+        
+        <div class = "alert alert-success {{pm25_index}}" role="alert" ><strong>PM 2.5 Index:</strong><hr> {{api.1.AQI}} </div>
+
+
+
+
+        <div class = "alert alert-dark" role="alert" ><Strong>PM 2.5 Quality:</Strong><hr> {{api.1.Category.Name}} </div>
+        <div class = "alert alert-dark" role="alert" ><strong>PM 10 Index:</strong><hr> {{api.2.AQI}} </div>
+        <div class = "alert alert-dark" role="alert" ><strong>PM 10 Quality:</strong><hr> {{api.2.Category.Name}}  </div>
     </div>
 
     {% endif %}
