@@ -2,16 +2,33 @@
 
 {% block content %}
 
-<h1>Air Quality & PM Readings</h1>
+<h1>Air Quality & PM Readings </h1>
+<div class = "alert alert-dark" role="alert" >Date of Reading: {{ api.0.DateObserved }} </div>
 <br/>
-Air Quality Index: {{ api.0.AQI }} <br/> <br/>
-Date of Reading: {{ api.0.DateObserved }} <br/> <br/>
-Air Quality: {{ api.0.Category.Name }} <br/> <br/>
-City: {{ api.0.ReportingArea }} <br/> <br/>
-PM 2.5 Index: {{api.1.AQI}} <br/> <br/>
-PM 2.5 Quality: {{api.1.Category.Name}} <br/> <br/>
-PM 10 Index: {{api.2.AQI}} <br/> <br/>
-PM 10 Quality: {{api.2.Category.Name}} <br/> <br/>
+
+{% if api %}
+    {% if api == 'Error..' %}
+    There was an error, please try again...
+    {% else %}
+
+    
+    <div class = "alert alert-dark" role="alert" >
+        <div class = "alert alert-dark" role="alert" >City: {{ api.0.ReportingArea }} </div>
+        <div class = "alert alert-dark" role="alert" >Air Quality Index: {{ api.0.AQI }} </div>     
+        <div class = "alert alert-dark" role="alert" >Air Quality: {{ api.0.Category.Name }}  </div> 
+        <div class = "alert alert-dark" role="alert" >PM 2.5 Index: {{api.1.AQI}} </div>
+        <div class = "alert alert-dark" role="alert" >PM 2.5 Quality: {{api.1.Category.Name}} </div>
+        <div class = "alert alert-dark" role="alert" >PM 10 Index: {{api.2.AQI}} </div>
+        <div class = "alert alert-dark" role="alert" >PM 10 Quality: {{api.2.Category.Name}}  </div>
+    </div>
+
+    {% endif %}
+        
+{% endif %}
+
+
+        
+        
 {% endblock %}
 
 
