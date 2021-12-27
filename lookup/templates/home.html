@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{
+
 
 <div class="container-fluid"> 
     <h1>Air Quality & PM Readings </h1> <br/>
@@ -50,17 +50,14 @@
         
         {% endif %}
 
-
-
-        
         <div class = "alert alert-success {{pm25_index}}" role="alert" ><strong>PM 2.5 Index:</strong><hr> {{api.1.AQI}} </div>
 
+        <div class = "alert alert-dark {{pm25_index}}" role="alert" ><Strong>PM 2.5 Quality:</Strong><hr> {{api.1.Category.Name}} </div>
 
-
-
-        <div class = "alert alert-dark" role="alert" ><Strong>PM 2.5 Quality:</Strong><hr> {{api.1.Category.Name}} </div>
         <div class = "alert alert-dark" role="alert" ><strong>PM 10 Index:</strong><hr> {{api.2.AQI}} </div>
+
         <div class = "alert alert-dark" role="alert" ><strong>PM 10 Quality:</strong><hr> {{api.2.Category.Name}}  </div>
+
     </div>
 
     {% endif %}
