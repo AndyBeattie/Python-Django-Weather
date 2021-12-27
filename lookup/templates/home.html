@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>Air Quality & PM Readings </h1>
-<div class = "alert alert-dark" role="alert" >Date of Reading: {{ api.0.DateObserved }} </div>
+<div class = "alert alert-dark" role="alert" ><Strong>Date of Reading:</Strong> {{ api.0.DateObserved }} </div>
 <br/>
 
 {% if api %}
@@ -13,13 +13,13 @@
 
     
     <div class = "alert alert-dark" role="alert" >
-        <div class = "alert alert-dark" role="alert" >City: {{ api.0.ReportingArea }} </div>
-        <div class = "alert alert-dark" role="alert" >Air Quality Index: {{ api.0.AQI }} </div>     
-        <div class = "alert alert-dark" role="alert" >Air Quality: {{ api.0.Category.Name }}  </div> 
-        <div class = "alert alert-dark" role="alert" >PM 2.5 Index: {{api.1.AQI}} </div>
-        <div class = "alert alert-dark" role="alert" >PM 2.5 Quality: {{api.1.Category.Name}} </div>
-        <div class = "alert alert-dark" role="alert" >PM 10 Index: {{api.2.AQI}} </div>
-        <div class = "alert alert-dark" role="alert" >PM 10 Quality: {{api.2.Category.Name}}  </div>
+        <div class = "alert alert-dark" role="alert" ><strong>City:</strong> {{ api.0.ReportingArea }} </div>
+        <div class = "alert alert-dark" role="alert" ><strong>Air Quality Index:</strong> {{ api.0.AQI }} </div>     
+        <div class = "alert alert-dark" role="alert" ><strong>Air Quality:</strong> {{ api.0.Category.Name }}  </div> 
+        <div class = "alert alert-dark" role="alert" ><strong>PM 2.5 Index:</strong> {{api.1.AQI}} </div>
+        <div class = "alert alert-dark" role="alert" ><Strong>PM 2.5 Quality:</Strong> {{api.1.Category.Name}} </div>
+        <div class = "alert alert-dark" role="alert" ><strong>PM 10 Index:</strong> {{api.2.AQI}} </div>
+        <div class = "alert alert-dark" role="alert" ><strong>PM 10 Quality:</strong> {{api.2.Category.Name}}  </div>
     </div>
 
     {% endif %}
