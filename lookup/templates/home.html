@@ -11,6 +11,9 @@
 
 <div class = "alert alert-dark" role="alert" ><strong>City:</strong><hr> {{ api.0.ReportingArea }}</div> <br/>
 
+{% if zipcode %}
+    {{ zipcode }}
+{%  endif %}
 
 {% if api %}
     {% if api == 'Error..' %}
